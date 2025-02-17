@@ -20,9 +20,9 @@ const App = () => {
   const handleStatusChange = (status) => {    //Διαχειριση επιλογης φιλτρου
     setActiveFilters(prev => {
       if (prev.includes(status)) {
-        return prev.filter(s => s !== status);
+        return prev.filter(s => s !== status);  //αν το status υπαρχει ηδη τοτε το αφαιρει
       } else if (prev.length < 3) {
-        return [...prev, status];
+        return [...prev, status];  //αλλιως το προσθετει 
       }
       return prev;
     });
@@ -41,7 +41,7 @@ const App = () => {
       setPets([]);  //καθαρισμος του πινακα πριν απο καθε fetch
       try {
         const response = await axios.get(
-          `https://petstore.swagger.io/v2/pet/findByStatus?status=${activeFilters.join(",")}`
+          `https://petstore.swagger.io/v2/pet/findByStatus?status=${activeFilters.join(",")}`  //api call με ενα η περισσοτερα φιλτρα
         );
 
         const validPets = Array.isArray(response.data)   //Ελεγχος αν το response ειναι πινακας και δημιουργια του πινακα με το id , name ,status
