@@ -12,6 +12,7 @@ const STATUS_STYLES = {
 };
 
 const App = () => {
+
   const [pets, setPets] = useState([]);
   const [activeFilters, setActiveFilters] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -80,10 +81,10 @@ const App = () => {
             <h3 className="font-semibold text-slate-700 text-lg">
               Filter by status
             </h3>
-            
+
             <button
               onClick={() => {
-                setActiveFilters([])
+                setActiveFilters([]) //καθαρισμος φιλτρων μετα το reset
                 setPets([]) // Καθαρισμος πινακα μετα το reset
               }}
               className="px-4 py-2 text-sm font-medium transition-all hover:rotate-4   duration-200 cursor-pointer bg-slate-500 hover:bg-slate-600 rounded-2xl text-white"
@@ -101,10 +102,7 @@ const App = () => {
                 key={status}
                 className={`flex items-center p-2 rounded-lg cursor-pointer
                            transition-all duration-200 hover:bg-slate-300
-                           ${!activeFilters.includes(status) && activeFilters.length >= 3
-                    ? 'opacity-40'
-                    : ''
-                  }`}
+                           ${!activeFilters.includes(status) && activeFilters.length >= 3}`}
               >
                 <input
                   type="checkbox"
