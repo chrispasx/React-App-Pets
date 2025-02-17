@@ -72,10 +72,10 @@ const App = () => {
     <div className="min-h-screen bg-gradient-to-br from-slate-800 to-slate-900 py-12 px-4">
       <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl p-8">
         <h2 className="text-4xl font-bold text-slate-800 mb-8 text-center">
-          Pet Store
+          React Pet
         </h2>
 
-        <div className="bg-slate-50 rounded-xl p-6 mb-8 shadow-inner">
+        <div className="bg-slate-50 rounded-xl p-6 mb-8 shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-semibold text-slate-700 text-lg">
               Filter by status
@@ -85,8 +85,7 @@ const App = () => {
                 setActiveFilters([])
                 setPets([])
               }}
-              className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 
-                         transition-colors duration-200 cursor-pointer"
+              className="px-4 py-2 text-sm font-medium transition-all hover:rotate-4   duration-200 cursor-pointer bg-slate-500 hover:bg-slate-600 rounded-2xl text-white"
             >
               Reset filters
             </button>
@@ -96,7 +95,7 @@ const App = () => {
               <label
                 key={status}
                 className={`flex items-center p-2 rounded-lg cursor-pointer
-                           transition-all duration-200 hover:bg-slate-100
+                           transition-all duration-200 hover:bg-slate-300
                            ${!activeFilters.includes(status) && activeFilters.length >= 3
                     ? 'opacity-40'
                     : ''
@@ -135,10 +134,10 @@ const App = () => {
             pets.map((pet) => (
               <div
                 key={pet.id}
-                className="flex items-center justify-between p-4 hover:bg-slate-50 
-                         rounded-xl transition-colors duration-200 border border-slate-100"
+                className="flex items-center justify-between p-4 hover:bg-slate-400 
+                         rounded-xl transition-colors duration-200 border border-slate-100 "
               >
-                <span className="text-slate-700 font-medium">
+                <span className="text-slate-700 font-medium ">
                   {pet.name}
                 </span>
                 <span className={`px-4 py-1.5 rounded-full text-sm font-medium 
