@@ -1,4 +1,4 @@
-# Pet Store React Application 🐾
+# Pet  React Application 🐾
 
 A modern, responsive React application that allows users to browse and filter pets by their status using the Petstore Swagger API.
 
