@@ -17,7 +17,7 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const handleStatusChange = (status) => {
+  const handleStatusChange = (status) => {    //Διαχειριση επιλογης φιλτρου
     setActiveFilters(prev => {
       if (prev.includes(status)) {
         return prev.filter(s => s !== status);
@@ -38,13 +38,13 @@ const App = () => {
     const fetchPets = async () => {
       setLoading(true);
       setError(null);
-      setPets([]);
+      setPets([]);  //καθαρισμος του πινακα πριν απο καθε fetch
       try {
         const response = await axios.get(
           `https://petstore.swagger.io/v2/pet/findByStatus?status=${activeFilters.join(",")}`
         );
 
-        const validPets = Array.isArray(response.data)
+        const validPets = Array.isArray(response.data)   //Ελεγχος αν το response ειναι πινακας και δημιουργια του πινακα με το id , name ,status
           ? response.data
             .filter(pet => pet?.id != null)
             .map(pet => ({
@@ -65,31 +65,36 @@ const App = () => {
     };
 
     fetchPets();
-  }, [activeFilters]);
+  }, [activeFilters]);  //ξανακαλειται η useEffect οταν αλλαξει το activeFilters
 
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-800 to-slate-900 py-12 px-4">
       <div className="max-w-3xl mx-auto bg-white rounded-xl shadow-2xl p-8">
-        <h2 className="text-4xl font-bold text-slate-800 mb-8 text-center">
+        <h1 className="text-4xl font-bold text-slate-800 mb-8 text-center">
           React Pet
-        </h2>
+        </h1>
 
         <div className="bg-slate-50 rounded-xl p-6 mb-8 shadow-lg">
           <div className="flex justify-between items-center mb-4">
             <h3 className="font-semibold text-slate-700 text-lg">
               Filter by status
             </h3>
+            
             <button
               onClick={() => {
                 setActiveFilters([])
-                setPets([])
+                setPets([]) // Καθαρισμος πινακα μετα το reset
               }}
               className="px-4 py-2 text-sm font-medium transition-all hover:rotate-4   duration-200 cursor-pointer bg-slate-500 hover:bg-slate-600 rounded-2xl text-white"
             >
               Reset filters
             </button>
           </div>
+
+
+          {/* εμφανιση των checkboxes */}
+
           <div className="flex flex-wrap gap-4">
             {STATUSES.map((status) => (
               <label
